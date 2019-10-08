@@ -1,0 +1,27 @@
+<form [formGroup]="personForm" (ngSubmit)="onSubmit()">
+    <label>
+        Title:
+        <textarea formControlName="title"></textarea>
+        <div *ngIf="submitted && personForm.controls.title.errors" class="error">
+            A title is required!
+        </div>
+    </label>
+    <label>
+        First Name:
+        <textarea formControlName="fname"></textarea>
+        <div *ngIf="submitted && personForm.controls.fname.errors" class="error">
+            A first name is required!
+        </div>
+    </label>
+    <label>
+        Last Name:
+        <textarea formControlName="lname"></textarea>
+        <div *ngIf="submitted && personForm.controls.lname.errors" class="error">
+            A last name is required!
+        </div>
+    </label>
+
+    <input type="submit" value="Submit person">
+
+</form>
+
