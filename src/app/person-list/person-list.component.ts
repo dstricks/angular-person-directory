@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Person } from '../person';
+import { PersonDataService} from '../person-data.service'
 
 @Component({
   selector: 'app-person-list',
@@ -7,17 +8,12 @@ import { Person } from '../person';
   styleUrls: ['./person-list.component.css']
 })
 export class PersonListComponent implements OnInit {
-  person: Person = {
-    title: "Manager",
-    fname: "John",
-    lname: "Smith"
-  }
-  
-  people: Array<Person> = [this.person]
+  people: Array<Person> = []
 
-  constructor() { }
+  constructor(private personDataService: PersonDataService) { }
 
   ngOnInit() {
+    this.people = this.personDataService.getAllPeople();
   }
 
 }
