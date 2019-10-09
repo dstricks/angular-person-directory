@@ -10,6 +10,33 @@ describe('PersonDataService', () => {
     expect(service).toBeTruthy();
   });
 
+  describe('addPerson()', () => {
+    it('should create an id for added people', () => {
+      const service: PersonDataService = TestBed.get(PersonDataService);
+      let person1 = new Person({fname: "John"});
+      service.addPerson(person1);
+      expect(service.getAllPeople()[0].id).toBeDefined();
+    });
+
+    it('should preserve an existing person id', () => {
+      const service: PersonDataService = TestBed.get(PersonDataService);
+      let person1 = new Person({fname: "John", id: 99});
+      service.addPerson(person1);
+      expect(service.getAllPeople()[0].id).toEqual(99);
+    });
+  });
+
+  describe('deletePersonById()', () => {
+    it('should delete a person by id', () => {
+      const service: PersonDataService = TestBed.get(PersonDataService);
+      let person = new Person({fname: "John"});
+      service.addPerson(person);
+      let personId = service.getAllPeople()[0].id;
+      service.deletePersonById(personId);
+      expect(service.getAllPeople()).toEqual([]);
+    });
+  });
+
   describe('getAllPeople()', () => {
     it('should return an empty array by default', () => {
       const service: PersonDataService = TestBed.get(PersonDataService);

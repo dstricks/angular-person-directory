@@ -6,12 +6,21 @@ import { Person } from './person';
 })
 
 export class PersonDataService {
+  idIndex: number = 0;
   people: Person[] = [];
 
   constructor() { }
 
   addPerson(person: Person): PersonDataService {
+    if (!person.id) {
+      person.id = ++this.idIndex;
+    }
     this.people.push(person);
+    return this;
+  }
+
+  deletePersonById(id: number): PersonDataService {
+    this.people = this.people.filter(person => person.id !== id);
     return this;
   }
 
