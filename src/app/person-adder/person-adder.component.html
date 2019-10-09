@@ -1,27 +1,32 @@
-<form [formGroup]="personForm" (ngSubmit)="onSubmit()">
-    <label>
-        Title:
-        <textarea formControlName="title"></textarea>
-        <div *ngIf="submitted && personForm.controls.title.errors" class="error">
-            A title is required!
+<div class="card mt-5">
+    <form [formGroup]="personForm" (ngSubmit)="onSubmit()">
+        <div class="form-group row p-1 mt-3 mr-2">
+            <label class="col-sm-4 col-form-label text-right">Title:</label>
+            <div class="col-sm-8">
+                <input type="text" formControlName="title" class="form-control">
+                <small *ngIf="submitted && personForm.controls.title.errors" class="form-text text-danger">
+                    A title is required!
+                </small>
+            </div>
         </div>
-    </label>
-    <label>
-        First Name:
-        <textarea formControlName="fname"></textarea>
-        <div *ngIf="submitted && personForm.controls.fname.errors" class="error">
-            A first name is required!
+        <div class="form-group row p-1 mr-2">
+            <label class="col-sm-4 col-form-label text-right">First Name:</label>
+            <div class="col-sm-8">
+                <input type="text" formControlName="fname" class="form-control">
+                <small *ngIf="submitted && personForm.controls.fname.errors" class="form-text text-danger">
+                    A first name is required!
+                </small>
+            </div>
         </div>
-    </label>
-    <label>
-        Last Name:
-        <textarea formControlName="lname"></textarea>
-        <div *ngIf="submitted && personForm.controls.lname.errors" class="error">
-            A last name is required!
+        <div class="form-group row p-1 mr-2">
+            <label class="col-sm-4 col-form-label text-right">Last Name:</label>
+            <div class="col-sm-8">
+                <input type="text" formControlName="lname" class="form-control">
+                <small *ngIf="submitted && personForm.controls.lname.errors" class="form-text text-danger">
+                    A last name is required!
+                </small>
+            </div>
         </div>
-    </label>
-
-    <input type="submit" value="Add">
-
-</form>
-
+        <input class="btn btn-primary mb-4 mr-4" style="float: right;" type="submit" value="Add">
+    </form>
+</div>

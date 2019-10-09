@@ -1,5 +1,12 @@
-<div *ngFor="let person of people">
-    {{ person.fname }} {{ person.lname}} ({{ person.title }})
-
-    <button (click)="remove(person)">Remove</button>
+<div class="mt-5">
+    <div *ngIf="people.length === 0">
+        <h2 class="text-center" style="margin-top: 120px;">No Items</h2>
+    </div>
+    <div *ngFor="let person of people" class="card mt-3" style="width: 75%;">
+        <div class="card-body">
+            <h5 class="card-title">{{ person.title }}</h5>
+            <p class="card-text pt-2">{{ person.fname }} {{ person.lname}}</p>
+            <button class="btn btn-danger" (click)="remove(person)" style="float: right;">Remove</button>
+        </div>
+    </div>
 </div>
