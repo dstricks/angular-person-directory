@@ -16,4 +16,9 @@ export class PersonListComponent implements OnInit {
     this.people = this.personDataService.getAllPeople();
   }
 
+  remove(person: Person) {
+    this.personDataService.deletePersonById(person.id);
+    this.people = this.personDataService.getAllPeople();
+  }
+
 }
